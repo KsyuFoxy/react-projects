@@ -1,0 +1,21 @@
+.title-blue {
+    border-collapse: separate;
+    width: 550px;
+    td {
+        background-color: $title-blue;
+        color: white;
+        text-align: center;
+        &:nth-child(n+2) {
+                border-left:1px solid white;
+        }
+    }
+    td:nth-child(1), th:nth-child(1) {
+          width: 240px;
+     }
+    td:nth-child(n+2), th:nth-child(n+2) {
+          width: 60px;
+    }
+    td:nth-child(n+4), th:nth-child(n+4) {
+          width: 140px;
+    }
+}

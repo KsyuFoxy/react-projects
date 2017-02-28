@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>React Tables</title>
+    <link rel="stylesheet" type="text/css" href="styles.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://rawgit.com/mistic100/jQuery-QueryBuilder/master/dist/js/query-builder.standalone.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="http://querybuilder.js.org/dist/jQuery-QueryBuilder/dist/css/query-builder.default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <script src="https://fb.me/react-0.14.7.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+
+    <script type="text/babel">
+    var configuration = {
+        page1: {
+            assortValues: [2413.00, 2188.00]
+        }
+    }
+
+
+    class Header extends React.Component {
+        render() {
+            return (
+              <div className='header'>
+                  <img src='img/Customer-logo.jpg'/>
+                  <img src='img/logo.png'/>
+                  <div className='header-text'>
+                      <p>{this.props.formTitle}</p>
+                  </div>
+              </div>
+        )
+      };
+    }
+    class Footer extends React.Component {
+        render() {
+          return (
+            <div className='footer'>
+                  <p>test Form</p>
+                  <p>all prices are in Euro</p>
+                  <p>Seite {this.props.pageNumber} from 5</p>
+            </div>
+          )
+        }
+      }
+    class TableTitleBlue extends React.Component {
+      render() {
+        return(
+          <div>
+            <table className='title-blue'>
+              <tbody>
+                <tr>
+                  <td>Item</td>
+                  <td>Quantity</td>
+                  <td>Pc</td>
+                  <td>Price</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+    }
+    class TableTitle extends React.Component  {
+      render(){
+        return(
+          <tr>
+            <td colSpan="5">{this.props.tdName}</td>
+          </tr>
+        )
+      }
+    }
+    class TableRow extends React.Component {
+      render() {
+        return(
+          <tr>
+            <th>{this.props.descr}</th>
+            <th>{this.props.number}</th>
+            <th>{this.props.pc}</th>
+            <th>{this.props.fixedPrice}</th>
+          </tr>
+
+        )
+      }
+    }
+    class TableAssortmentRow extends React.Component{
+        render() {
+            return (
+                       <tr className="assortment-row">
+                         <th colSpan="3">Totale assortment price</th>
+                         <th>{this.props.assorPrice} €</th>
+                       </tr>
+            )
+
+        }
+    }
+    class LastRow extends React.Component {
+      getAmount(event) {
+          var value = event.target.value;
+          this.props.onInputChange(value, this.props.index);
+      }
+
+      render() {
+        return(
+          <tr className="last-row">
+              <th>Bestellmenge</th>
+              <th>
+                	<input type="number" value={this.props.value} onChange={this.getAmount.bind(this)}/>
+              </th>
+              <th>Pc.</th>
+              <th>{this.props.assortAmount} €</th>
+          </tr>
+        )
+      }
+    }
+    class BlueRow extends React.Component {
+        render() {
+            return(
+                <table className="bottom-blue">
+                    <tbody>
+                       <tr>
+                         <td>Total amount from page 1 - 3</td>
+                         <td>{this.props.value} €</td>
+                       </tr>
+                    </tbody>
+                </table>
+            )
+        }
+    }
+    function arraySum(arr) {
+        var sum = 0;
+        var i;
+        for (i=0; i<arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+
+    class ConditionTable extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                assortAmount: [0, 0, 0, 0, 0],
+                    prices: [15, 16, 17, 18, 19, 20],
+                totalValues: arraySum([15, 16, 17, 18, 19])
+            };
+        }
+        render() {
+            return(
+                <div>
+                <table className='prise-table'>
+                   <tbody>
+                            <tr>
+                              <td colSpan="5">Additional delivery conditions</td>
+                             </tr>
+                            <tr>
+                              <th>Fruits assortiment 1</th>
+                              <th>{this.state.prices[0]} </th>
+                              <th>Pack.</th>
+                              <th>15.00 €</th>
+                              <th>{this.state.assortAmount[0]} €</th>
+                             </tr>
+                            <tr>
+                              <th>Fruits assortiment 2</th>
+                              <th>{this.state.prices[1]} </th>
+                              <th>Pack.</th>
+                              <th>13.00 €</th>
+                              <th>{this.state.assortAmount[1]} €</th>
+                             </tr>
+                            <tr>
+                              <th>Cakes assortiment 1</th>
+                              <th>{this.state.prices[2]} </th>
+                              <th>Pack.</th>
+                              <th>18.00 €</th>
+                              <th>{this.state.assortAmount[2]} €</th>
+                             </tr>
+                            <tr>
+                              <th>Cakes assortiment 2</th>
+                              <th>{this.state.prices[3]} </th>
+                              <th>Pack.</th>
+                              <th>15.00 €</th>
+                              <th>{this.state.assortAmount[3]} €</th>
+                             </tr>
+                            <tr>
+                              <th>Berries assortiment 1</th>
+                              <th>{this.state.prices[4]} </th>
+                              <th>Pack.</th>
+                              <th>17.50 €</th>
+                              <th>{this.state.assortAmount[4]} €</th>
+                             </tr>
+                            <tr>
+                              <th>Berries assortiment 2</th>
+                              <th>{this.state.prices[5]} </th>
+                              <th>Pack.</th>
+                              <th>18.00 €</th>
+                              <th>{this.state.assortAmount[5]} €</th>
+                            </tr>
+                            <tr className="last-row">
+                              <th colSpan="4">Table amount</th>
+                              <th>{this.state.totalValues} €</th>
+                            </tr>
+                        </tbody>
+                  </table>
+                </div>
+            )
+        }
+    }
+    class DescribeTables extends React.Component {
+        render() {
+            return(
+                <div>
+                    <table className='describe-table'>
+                        <tbody>
+                              <tr>
+                                <td colSpan="2">Discounts</td>
+                              </tr>
+                              <tr>
+                                <th>Day</th>
+                                <th>Discount</th>
+                              </tr>
+                              <tr>
+                                <th>Monday</th>
+                                <th>2 %</th>
+                              </tr>
+                              <tr>
+                                <th>Tuesday</th>
+                                <th>1 %</th>
+                              </tr>
+                              <tr>
+                                <th>Wednesday</th>
+                                <th>1 %</th>
+                              </tr>
+                              <tr>
+                                <th>Sundays</th>
+                                <th>5 %</th>
+                              </tr>
+                              <tr>
+                                <th>Other days</th>
+                                <th>1.5 %</th>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <table className='describe-table describe-table-right'>
+                        <tbody>
+                              <tr>
+                                <td colSpan="2">Conditions</td>
+                              </tr>
+                              <tr>
+                                <th>Shipping</th>
+                                <th>15.00 €</th>
+                              </tr>
+                              <tr>
+                                <th>Packing</th>
+                                <th>13.00 €</th>
+                              </tr>
+                              <tr>
+                                <th>Storage</th>
+                                <th>22.00 €</th>
+                              </tr>
+                       </tbody>
+                  </table>
+                </div>
+            )
+        }
+    }
+
+    class SquareLine extends React.Component {
+        render() {
+            return(
+                <div className='square-line'>
+                    	<div style={{opacity: this.props.opacity1}}>Fruits</div>
+                        <div style={{opacity: this.props.opacity2}}>Cakes</div>
+                        <div style={{opacity: this.props.opacity3}}>Berries</div>
+                        <div style={{opacity: this.props.opacity4}}></div>
+                </div>
+            )
+        }
+    }
+    class Image extends React.Component {
+        render() {
+            return(
+                <div className='product-image'>
+                    <img src={'img/' + this.props.src + '.png'} />
+                </div>
+            )
+        }
+    }
+    class Section1 extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                inputValues: [undefined, undefined],
+                results : [0, 0]
+            }
+        }
+
+        onInputCellChange(value, index) {
+            var newInputValues = this.state.inputValues;
+            var newResults = this.state.results;
+            newInputValues[index] = value;
+            newResults[index] = value * configuration.page1.assortValues[index];
+            this.setState({
+                inputValues: newInputValues,
+                results: newResults
+            });
+        }
+
+        render () {
+          return(
+            <div className="section">
+                  <SquareLine  opacity1={1} />
+                  <TableTitleBlue />
+                  <table className='prise-table'>
+                    <tbody>
+                        <TableTitle tdName={'Fruits assortiment 1'} />
+                        <TableRow descr={'Apple'} number={10} pc={'Kg.'} fixedPrice={'100.00 €'} />
+                        <TableRow descr={'Pummelo'} number={5} pc={'Kg.'} fixedPrice={'130.00 €'} />
+                        <TableRow descr={'Banana'} number={10} pc={'Kg.'} fixedPrice={'50.00 €'} />
+                        <TableRow descr={'Cherries'} number={3} pc={'Kg.'} fixedPrice={'61.00 €'} />
+                        <TableRow descr={'Grapefruit'} number={2} pc={'Kg.'} fixedPrice={'40.00 €'} />
+                        <TableAssortmentRow assorPrice={configuration.page1.assortValues[0]} />
+                        <LastRow index={0} value={this.state.inputValues[0]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[0]}/>
+                    </tbody>
+                   </table>
+                  <table className='prise-table'>
+                    <tbody>
+                    <TableTitle tdName={'Fruits assortiment 2'} />
+                    <TableRow descr={'Orange'} number={8} pc={'Kg.'} fixedPrice={'90.00 €'} />
+                    <TableRow descr={'Kiwifruit'} number={5} pc={'Kg.'} fixedPrice={'20.00 €'} />
+                    <TableRow descr={'Grapes'} number={2} pc={'Kg.'} fixedPrice={'80.00 €'} />
+                    <TableRow descr={'Guava'} number={3} pc={'Kg.'} fixedPrice={'112.00 €'}  />
+                    <TableRow descr={'Pear'} number={10} pc={'Kg.'} fixedPrice={'80.00 €'} />
+                    <TableRow descr={'Pineapple'} number={6} pc={'Kg.'} fixedPrice={'12.00 €'}  />
+                    <TableAssortmentRow assorPrice={configuration.page1.assortValues[1]} />
+                    <LastRow index={1} value={this.state.inputValues[1]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[1]}/>
+                    </tbody>
+                   </table>
+             </div>
+          )
+        }
+      }
+    class Section2 extends React.Component {
+          render () {
+            return(
+              <div className='section'>
+                    <SquareLine opacity2={1}/>
+                    <TableTitleBlue />
+                    <table className='prise-table'>
+                      <tbody>
+                          <TableTitle tdName={'Cakes assortiment 1'} />
+                          <TableRow descr={'Cheesecake'} number={2} pc={'Pc.'} fixedPrice={'120.00 €'} />
+                          <TableRow descr={'Brownie'} number={2} pc={'Pc.'} fixedPrice={'150.00 €'} />
+                          <TableRow descr={'Chocolate cake'} number={1} pc={'Pc.'} fixedPrice={'220.00 €'} />
+                          <TableRow descr={'Coffee cake'} number={1} pc={'Pc.'} fixedPrice={'55.00 €'} />
+                          <TableRow descr={'Dacquoise'} number={1} pc={'Pc'} fixedPrice={'118.00 €'} />
+                          <TableAssortmentRow assorPrice={'933.00'}/>
+                          <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                      </tbody>
+                    </table>
+                    <table className='prise-table'>
+                      <tbody>
+                          <TableTitle tdName={'Cakes assortiment 2'} />
+                          <TableRow descr={'Muffins'} number={20} pc={'Pc.'} fixedPrice={'12.00 €'} />
+                          <TableRow descr={'Yogurt cake'} number={1} pc={'Pc.'} fixedPrice={'50.00 €'} />
+                          <TableRow descr={'Marmalades'} number={1} pc={'Pc.'} fixedPrice={'22.00 €'} />
+                          <TableRow descr={'Croquembouche'} number={1} pc={'Pc.'} fixedPrice={'55.00 €'} />
+                          <TableRow descr={'Gingerbread'} number={1} pc={'Pc'} fixedPrice={'118.00 €'} />
+                          <TableAssortmentRow assorPrice={'485.00'}/>
+                          <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                      </tbody>
+                    </table>
+              </div>
+            )
+          }
+      }
+    class Section3 extends React.Component {
+           render () {
+             return(
+               <div className="section">
+                     <SquareLine  opacity3={1} />
+                     <TableTitleBlue />
+                     <table className='prise-table'>
+                       <tbody>
+                           <TableTitle tdName={'Berries assortiment 1'} />
+                           <TableRow descr={'Blackcurrant'} number={2} pc={'Kg.'} fixedPrice={'150.00 €'} />
+                           <TableRow descr={'Blueberries'} number={1} pc={'Kg.'} fixedPrice={'200.00 €'} />
+                           <TableRow descr={'Elderberries'} number={3} pc={'Kg.'} fixedPrice={'480.00 €'} />
+                           <TableRow descr={'Mulberries'} number={1} pc={'Kg.'} fixedPrice={'250.00 €'} />
+                           <TableRow descr={'Raspberries'} number={2} pc={'Kg.'} fixedPrice={'50.00 €'} />
+                           <TableRow descr={'Strawberries'} number={1} pc={'Kg.'} fixedPrice={'56.00 €'} />
+                           <TableAssortmentRow assorPrice={'2346.00'}/>
+                           <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                       </tbody>
+                      </table>
+                     <table className='prise-table'>
+                       <tbody>
+                           <TableTitle tdName={'Berries assortiment 2'} />
+                           <TableRow descr={'Blackberries'} number={4} pc={'Kg.'} fixedPrice={'120.00 €'} />
+                           <TableRow descr={'Huckleberry'} number={5} pc={'Kg.'} fixedPrice={'560.00 €'} />
+                           <TableRow descr={'Dewberry'} number={1} pc={'Kg.'} fixedPrice={'80.00 €'} />
+                           <TableRow descr={'Currant'} number={3} pc={'Kg.'} fixedPrice={'32.00 €'} />
+                           <TableRow descr={'Gooseberries'} number={1} pc={'Kg.'} fixedPrice={'86.00 €'} />
+                           <TableAssortmentRow assorPrice={'742.00'}/>
+                           <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                       </tbody>
+                      </table>
+
+                </div>
+             )
+           }
+         }
+    class Section4 extends React.Component {
+            render () {
+              return(
+                <div className='section'>
+                    <SquareLine opacity4={1}/>
+                    <TableTitleBlue />
+                    <ConditionTable />
+                    <BlueRow />
+                    <DescribeTables />
+                </div>
+              )
+            }
+       }
+
+    class Page1 extends React.Component {
+        render() {
+          return (
+            <div className='page-container'>
+              <Header formTitle={'Fruits'} />
+              <Section1 />
+              <Image src={'Fruits'} />
+              <Footer pageNumber={1}/>
+            </div>
+          )
+        }
+      }
+    class Page2 extends React.Component {
+          render() {
+            return (
+              <div className='page-container'>
+                <Header formTitle={'Cakes'} />
+                <Section2 />
+                <Image src={'Cakes'} />
+                <Footer pageNumber={2}/>
+              </div>
+            )
+          }
+    }
+    class Page3 extends React.Component {
+          render() {
+            return (
+              <div className='page-container'>
+                <Header formTitle={'Berries'} />
+                <Section3 />
+                <Image src={'Berry'} />
+                <Footer pageNumber={3}/>
+              </div>
+            )
+          }
+    }
+    class Page4 extends React.Component {
+          render() {
+            return (
+              <div className='page-container'>
+                <Header formTitle={'Total'} />
+                <Section4 />
+                <Footer pageNumber={4}/>
+              </div>
+            )
+          }
+    }
+
+    class App extends React.Component {
+      render() {
+        return (
+          <div>
+          <Page1 />
+          </div>
+        )
+      }
+    }
+
+        ReactDOM.render(React.createElement(App), document.getElementById('react-with-scss'));
+    </script>
+</head>
+<body>
+<div id="react-with-scss"></div>
+</body>
+</html>

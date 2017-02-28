@@ -1,0 +1,86 @@
+.text-content {
+    position: relative;
+    top: 78px;
+    width: 740px;
+    margin: 0 auto;
+}
+.text-content-last-pag {
+    input {
+        background-color: $blue;
+    }
+    p, li {
+        font-size: 13px;
+        font-family: TitilliumLight;
+        width: 480px;
+    }
+    p {
+        margin-top: 20px;
+    }
+}
+.input-last-page {
+    width: 550px;
+    margin-left: 0;
+    input {
+        border: 1px solid $red;
+        width: 300px;
+    }
+}
+.date-and-signature {
+    width: 600px;
+    margin: 26px 0;
+    input {
+        border-style: none;
+        border-bottom: 1px solid black;
+        width: 240px;
+        padding-bottom: 0;
+    }
+    th {
+        text-align: left;
+        padding: 0 1px;
+    }
+}
+.office-signature {
+    height: 165px;
+    width: 756px;
+    margin-left: -28px;
+    padding: 0 20px;
+    background-color: $blue;
+    div:nth-child(1) p:nth-child(1) {
+        font-family: TitilliumSemibold;
+    }
+}
+.office-signature-dates {
+    position: absolute;
+    width: 310px;
+    p {
+        margin-top: 0;
+        word-wrap: break-word;
+    }
+    label {
+        font-size: 13px;
+    }
+    input {
+      width: 100%;
+      border-style: none;
+      background-color: white;
+      height: 20px;
+    }
+}
+.signature {
+    padding-top: 35px;
+    left: 400px;
+    p {
+        width: 310px;
+    }
+    p:nth-last-of-type(1) {
+        padding-top: 30px;
+        background-color: white;
+    }
+    p:nth-last-of-type(1) {
+        padding-top: 30px;
+        background-color: white;
+    }
+    p span:nth-last-of-type(1) {
+        margin-left: 119px;
+    }
+}

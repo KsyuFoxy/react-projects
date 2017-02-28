@@ -1,0 +1,115 @@
+p, label, li {
+    font-size: 15px;
+  }
+.prise-table {
+    width: 550px;
+    border-collapse: collapse;
+    margin: 20px 0;
+    td, th {
+          height: 23px;
+          font-size: 12px;
+          padding: 1px 5px;
+          line-height: 25px;
+     }
+    td {
+          color: white;
+          background-color: $table-head-blue;
+          text-align: left;
+          padding: 1px 5px;
+     }
+    td:nth-child(1), th:nth-child(1) {
+          width: 240px;
+          text-align: left;
+     }
+    td:nth-child(n+2), th:nth-child(n+2) {
+          width: 60px;
+    }
+    th:nth-child(2) {
+          text-align: right;
+    }
+    th:nth-child(3) {
+          text-align: left;
+    }
+    td:nth-child(n+4), th:nth-child(n+4) {
+          width: 140px;
+          text-align: right;
+    }
+    tr:nth-child(n+2) {
+          border-left: 1px solid $table-head-blue;
+          border-right: 1px solid $table-head-blue;
+    }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.last-row th {
+    border: 1px solid $table-head-blue;
+    background-color: $blue;
+    &:nth-child(5) {
+        background-color: white;
+    }
+    &:nth-child(2) {
+        border-color: $green-input;
+        background-color: white;
+    }
+    &:nth-child(2) input {
+        width: 50px;
+        border-style: none;
+        height: 18px;
+        text-align: center;
+        background-color: $blue;
+    }
+    &:nth-child(5) {
+        background-color: white;
+    }
+}
+.bottom-blue {
+    width: 550px;
+    td {
+        border: 1px solid $title-blue;
+        padding: 1px 5px;
+        &:nth-child(1) {
+            background-color: $title-blue;
+            color: white;
+        }
+        &:nth-child(2) {
+          background-color: white;
+          width: 140px;
+          color: black;
+          text-align: right;
+        }
+    }
+}
+.assortment-row {
+    width: 550px;
+    th {
+        background-color: white;
+        color: $title-blue;
+        padding: 1px 5px;
+        font-weight: bold;
+        &:nth-child(2) {
+          width: 140px;
+          text-align: right;
+        }
+    }
+}
+.prise-table-7rows {
+    th:nth-child(1), td:nth-child(1) {
+        width: 210px;
+    }
+    th:nth-child(n+4), td:nth-child(n+4) {
+        width: 80px;
+    }
+    tr.last-row th:nth-child(2) {
+        border-color: black;
+        background-color: white;
+    }
+}
+.prise-table-withoutInput {
+    tr.last-row th:nth-child(2) {
+      border-color: black;
+      background-color: $blue;
+    }
+}

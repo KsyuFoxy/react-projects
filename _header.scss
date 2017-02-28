@@ -1,0 +1,24 @@
+.header {
+  width: 750px;
+  height: 50px;
+  margin: 20px auto;
+  img {
+    position: absolute;
+    left: 24px;
+    width: 150px;
+  }
+  img:nth-child(2) {
+    left: 595px;
+    top: 18px;
+    width: 175px;
+  }
+}
+.header-text {
+  position: relative;
+  top: 80px;
+  width: 750px;
+  text-align: center;
+  p {
+    font-size: 40px;
+  }
+}
