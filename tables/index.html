@@ -14,8 +14,8 @@
 
     <script type="text/babel">
     var configuration = {
-        page1: {
-            assortValues: [2413.00, 2188.00]
+        pages: {
+            assortValues: [2413.00, 2188.00, 933.00, 485.00, 2346.00, 742.00]
         }
     }
 
@@ -128,6 +128,25 @@
             )
         }
     }
+    class ConditionTableTitle extends React.Component {
+        render() {
+            return(
+                <div>
+                  <table className='title-blue-6rows'>
+                    <tbody>
+                      <tr>
+                        <td>Item</td>
+                        <td>Quantity</td>
+                        <td>Pc</td>
+                        <td>Price</td>
+                        <td>Amount</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            )
+        }
+    }
     function arraySum(arr) {
         var sum = 0;
         var i;
@@ -141,60 +160,61 @@
         constructor(props) {
             super(props);
             this.state = {
-                assortAmount: [0, 0, 0, 0, 0],
-                    prices: [15, 16, 17, 18, 19, 20],
-                totalValues: arraySum([15, 16, 17, 18, 19])
+                deliveryAmount: [5, 0, 0, 0, 0],
+                    quantity: [15, 16, 17, 18, 19, 20],
+                    deliveryPrice: [15.00, 13.00, 18.00, 15.00, 17.50, 18.00]
             };
+
         }
         render() {
             return(
                 <div>
-                <table className='prise-table'>
+                <table className='prise-table prise-table-5row'>
                    <tbody>
                             <tr>
                               <td colSpan="5">Additional delivery conditions</td>
                              </tr>
                             <tr>
                               <th>Fruits assortiment 1</th>
-                              <th>{this.state.prices[0]} </th>
+                              <th>{this.state.quantity[0]} </th>
                               <th>Pack.</th>
                               <th>15.00 €</th>
-                              <th>{this.state.assortAmount[0]} €</th>
+                              <th>{this.state.deliveryAmount[0]} €</th>
                              </tr>
                             <tr>
                               <th>Fruits assortiment 2</th>
-                              <th>{this.state.prices[1]} </th>
+                              <th>{this.state.quantity[1]} </th>
                               <th>Pack.</th>
                               <th>13.00 €</th>
-                              <th>{this.state.assortAmount[1]} €</th>
+                              <th>{this.state.deliveryAmount[1]} €</th>
                              </tr>
                             <tr>
                               <th>Cakes assortiment 1</th>
-                              <th>{this.state.prices[2]} </th>
+                              <th>{this.state.quantity[2]} </th>
                               <th>Pack.</th>
                               <th>18.00 €</th>
-                              <th>{this.state.assortAmount[2]} €</th>
+                              <th>{this.state.deliveryAmount[2]} €</th>
                              </tr>
                             <tr>
                               <th>Cakes assortiment 2</th>
-                              <th>{this.state.prices[3]} </th>
+                              <th>{this.state.quantity[3]} </th>
                               <th>Pack.</th>
                               <th>15.00 €</th>
-                              <th>{this.state.assortAmount[3]} €</th>
+                              <th>{this.state.deliveryAmount[3]} €</th>
                              </tr>
                             <tr>
                               <th>Berries assortiment 1</th>
-                              <th>{this.state.prices[4]} </th>
+                              <th>{this.state.quantity[4]} </th>
                               <th>Pack.</th>
                               <th>17.50 €</th>
-                              <th>{this.state.assortAmount[4]} €</th>
+                              <th>{this.state.deliveryAmount[4]} €</th>
                              </tr>
                             <tr>
                               <th>Berries assortiment 2</th>
-                              <th>{this.state.prices[5]} </th>
+                              <th>{this.state.quantity[5]} </th>
                               <th>Pack.</th>
                               <th>18.00 €</th>
-                              <th>{this.state.assortAmount[5]} €</th>
+                              <th>{this.state.deliveryAmount[5]} €</th>
                             </tr>
                             <tr className="last-row">
                               <th colSpan="4">Table amount</th>
@@ -299,7 +319,12 @@
             var newInputValues = this.state.inputValues;
             var newResults = this.state.results;
             newInputValues[index] = value;
-            newResults[index] = value * configuration.page1.assortValues[index];
+            newResults[index] = value * configuration.pages.assortValues[index];
+
+            var quantity = this.state.quantity;
+            quantity[index] = newResults[index];
+
+            console.log(quantity[5])
             this.setState({
                 inputValues: newInputValues,
                 results: newResults
@@ -319,7 +344,7 @@
                         <TableRow descr={'Banana'} number={10} pc={'Kg.'} fixedPrice={'50.00 €'} />
                         <TableRow descr={'Cherries'} number={3} pc={'Kg.'} fixedPrice={'61.00 €'} />
                         <TableRow descr={'Grapefruit'} number={2} pc={'Kg.'} fixedPrice={'40.00 €'} />
-                        <TableAssortmentRow assorPrice={configuration.page1.assortValues[0]} />
+                        <TableAssortmentRow assorPrice={configuration.pages.assortValues[0]} />
                         <LastRow index={0} value={this.state.inputValues[0]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[0]}/>
                     </tbody>
                    </table>
@@ -332,7 +357,7 @@
                     <TableRow descr={'Guava'} number={3} pc={'Kg.'} fixedPrice={'112.00 €'}  />
                     <TableRow descr={'Pear'} number={10} pc={'Kg.'} fixedPrice={'80.00 €'} />
                     <TableRow descr={'Pineapple'} number={6} pc={'Kg.'} fixedPrice={'12.00 €'}  />
-                    <TableAssortmentRow assorPrice={configuration.page1.assortValues[1]} />
+                    <TableAssortmentRow assorPrice={configuration.pages.assortValues[1]} />
                     <LastRow index={1} value={this.state.inputValues[1]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[1]}/>
                     </tbody>
                    </table>
@@ -341,6 +366,24 @@
         }
       }
     class Section2 extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                inputValues: [undefined, undefined],
+                results : [0, 0]
+            }
+        }
+
+        onInputCellChange(value, index) {
+            var newInputValues = this.state.inputValues;
+            var newResults = this.state.results;
+            newInputValues[index] = value;
+            newResults[index] = value * configuration.pages.assortValues[index];
+            this.setState({
+                inputValues: newInputValues,
+                results: newResults
+            });
+        }
           render () {
             return(
               <div className='section'>
@@ -354,8 +397,8 @@
                           <TableRow descr={'Chocolate cake'} number={1} pc={'Pc.'} fixedPrice={'220.00 €'} />
                           <TableRow descr={'Coffee cake'} number={1} pc={'Pc.'} fixedPrice={'55.00 €'} />
                           <TableRow descr={'Dacquoise'} number={1} pc={'Pc'} fixedPrice={'118.00 €'} />
-                          <TableAssortmentRow assorPrice={'933.00'}/>
-                          <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                          <TableAssortmentRow assorPrice={configuration.pages.assortValues[2]}/>
+                          <LastRow index={2} value={this.state.inputValues[2]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[2]}/>
                       </tbody>
                     </table>
                     <table className='prise-table'>
@@ -366,8 +409,8 @@
                           <TableRow descr={'Marmalades'} number={1} pc={'Pc.'} fixedPrice={'22.00 €'} />
                           <TableRow descr={'Croquembouche'} number={1} pc={'Pc.'} fixedPrice={'55.00 €'} />
                           <TableRow descr={'Gingerbread'} number={1} pc={'Pc'} fixedPrice={'118.00 €'} />
-                          <TableAssortmentRow assorPrice={'485.00'}/>
-                          <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                          <TableAssortmentRow assorPrice={configuration.pages.assortValues[3]}/>
+                          <LastRow index={3} value={this.state.inputValues[3]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[3]}/>
                       </tbody>
                     </table>
               </div>
@@ -375,6 +418,24 @@
           }
       }
     class Section3 extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                inputValues: [undefined, undefined],
+                results : [0, 0]
+            }
+        }
+
+        onInputCellChange(value, index) {
+            var newInputValues = this.state.inputValues;
+            var newResults = this.state.results;
+            newInputValues[index] = value;
+            newResults[index] = value * configuration.pages.assortValues[index];
+            this.setState({
+                inputValues: newInputValues,
+                results: newResults
+            });
+        }
            render () {
              return(
                <div className="section">
@@ -389,8 +450,8 @@
                            <TableRow descr={'Mulberries'} number={1} pc={'Kg.'} fixedPrice={'250.00 €'} />
                            <TableRow descr={'Raspberries'} number={2} pc={'Kg.'} fixedPrice={'50.00 €'} />
                            <TableRow descr={'Strawberries'} number={1} pc={'Kg.'} fixedPrice={'56.00 €'} />
-                           <TableAssortmentRow assorPrice={'2346.00'}/>
-                           <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                           <TableAssortmentRow assorPrice={configuration.pages.assortValues[4]}/>
+                           <LastRow index={4} value={this.state.inputValues[4]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[4]}/>
                        </tbody>
                       </table>
                      <table className='prise-table'>
@@ -401,8 +462,8 @@
                            <TableRow descr={'Dewberry'} number={1} pc={'Kg.'} fixedPrice={'80.00 €'} />
                            <TableRow descr={'Currant'} number={3} pc={'Kg.'} fixedPrice={'32.00 €'} />
                            <TableRow descr={'Gooseberries'} number={1} pc={'Kg.'} fixedPrice={'86.00 €'} />
-                           <TableAssortmentRow assorPrice={'742.00'}/>
-                           <LastRow value={this.state.inputValue} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.result}/>
+                           <TableAssortmentRow assorPrice={configuration.pages.assortValues[5]}/>
+                           <LastRow index={5} value={this.state.inputValues[5]} onInputChange={this.onInputCellChange.bind(this)} assortAmount={this.state.results[5]}/>
                        </tbody>
                       </table>
 
@@ -415,7 +476,7 @@
               return(
                 <div className='section'>
                     <SquareLine opacity4={1}/>
-                    <TableTitleBlue />
+                    <ConditionTableTitle />
                     <ConditionTable />
                     <BlueRow />
                     <DescribeTables />
@@ -477,6 +538,9 @@
         return (
           <div>
           <Page1 />
+          <Page2 />
+          <Page3 />
+          <Page4 />
           </div>
         )
       }
