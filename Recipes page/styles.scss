@@ -1,0 +1,88 @@
+@import "variables";
+@import "header";
+@import "footer";
+@import "heart";
+@font-face {
+    font-family: BalooBhaina-Regular;
+    src: url('img_fonts/BalooBhaina-Regular.ttf');
+}
+@font-face {
+    font-family: OpenSans-Light;
+    src: url('img_fonts/OpenSans-Light.ttf');
+}
+
+p {
+    font-family: 'OpenSans-Light';
+    font-size: 14px;
+    margin: 10px 0;
+    color: $green;
+}
+.page-container {
+   margin: 0 auto;
+   margin-top: 20px;
+   position: relative;
+   width: 400px;
+   overflow: hidden;
+   text-align: center;
+}
+.recipe-wrapper {
+    display: inline-block;
+    width: 300px;
+    height: 320px;
+    border: 1px solid $green;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    p:nth-of-type(1) {
+        font-size: 20px;
+        font-family: 'BalooBhaina-Regular';
+        color: $violet;
+    }
+}
+.recipe-image {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-top-right-radius: 185px;
+    border-bottom-left-radius: 140px;
+    border: 1px solid $violet;
+    img {
+        width: 300px;
+    }
+}
+a {
+    color: #6d976e;
+    display: inline-block;
+    cursor: pointer;
+    background-color: white;
+    width: 100px;
+    box-shadow: 5px 5px 5px #888888;
+    text-decoration: none;
+    &:hover {
+        transform: scale(1.1);
+    }
+    &:active, &:visited {
+        color: #9E9E9E;
+    }
+}
+
+@media only screen and (min-width : 420px ) and (max-width : 797px) {
+    .page-container {
+       width: 400px;
+    }
+}
+@media only screen and (min-width : 798px ) and (max-width : 1119px) {
+    .page-container {
+       width: 800px;
+    }
+}
+@media only screen and (min-width : 1120px) {
+    .page-container {
+       width: 1040px;
+    }
+    .recipe-wrapper {
+        padding: 10px;
+        margin: 10px;
+    }
+
+}
