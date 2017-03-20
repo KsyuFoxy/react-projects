@@ -58,7 +58,7 @@
                     <Heart />
                     <p>{this.props.name}</p>
                     <p>{this.props.recipe}</p>
-                    <a href={'https://posts/'} target='_blank'>more here..</a>
+                    <a href={this.props.href} target='_blank'>more here..</a>
                 </div>
             )
         }
@@ -68,7 +68,7 @@
         render() {
           return (
             <div className='page-container'>
-                <Box src={'Tiramisu'} name={'Tiramisu'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'www.w3schools.com'}/>
+                <Box src={'Tiramisu'} name={'Tiramisu'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'https://www.w3schools.com'}/>
                 <Box src={'Brownie'} name={'Brownie'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
                 <Box src={'chees_cacke'} name={'Chees cacke'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
                 <Box src={'Jogurt_dessert'} name={'Jogurt dessert'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
