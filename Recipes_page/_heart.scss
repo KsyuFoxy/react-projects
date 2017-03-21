@@ -8,7 +8,6 @@
   transform: rotate(-45deg);
   width: 20px;
 }
-
 .heart:before,
 .heart:after {
   content: "";
@@ -18,12 +17,10 @@
   position: absolute;
   width: 20px;
 }
-
 .heart:before {
   top: -10px;
   left: 0;
 }
-
 .heart:after {
   left: 10px;
   top: 0;

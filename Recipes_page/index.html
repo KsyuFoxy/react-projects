@@ -56,9 +56,8 @@
                 <div className='recipe-wrapper'>
                     <Image src={this.props.src}/>
                     <Heart />
-                    <p>{this.props.name}</p>
+                    <a href={this.props.href} target='_blank'>{this.props.name}</a>
                     <p>{this.props.recipe}</p>
-                    <a href={this.props.href} target='_blank'>more here..</a>
                 </div>
             )
         }
