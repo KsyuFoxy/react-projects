@@ -7,25 +7,9 @@ import chees_cacke from './img_fonts/chees_cacke.jpg';
 import Jogurt_dessert from './img_fonts/Jogurt_dessert.jpg';
 import heart_VW from './img_fonts/heart_VW.png';
 import heart_Violet from './img_fonts/heart_Violet.png';
+import {Header, Footer} from './Header_Footer.js';
+import {Recipe} from './Recipe.js';
 
-class Header extends React.Component {
-    render() {
-        return (
-          <div className='header'>
-                  <p>My recipes</p>
-          </div>
-    )
-  };
-}
-class Footer extends React.Component {
-    render() {
-      return (
-        <div className='footer'>
-              <p>@ Copyright 2017 All rights reserved</p>
-        </div>
-      )
-    }
-  }
 
 class Image extends React.Component {
     render() {
@@ -80,6 +64,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Page1 />
+        <Recipe recipeImg={Tiramisu} recipeName={'Tiramisu'}/>
         <Footer />
       </div>
     )
