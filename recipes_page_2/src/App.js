@@ -5,6 +5,8 @@ import Tiramisu from './img_fonts/Tiramisu.jpg';
 import Brownie from './img_fonts/Brownie.jpg';
 import chees_cacke from './img_fonts/chees_cacke.jpg';
 import Jogurt_dessert from './img_fonts/Jogurt_dessert.jpg';
+import heart_VW from './img_fonts/heart_VW.png';
+import heart_Violet from './img_fonts/heart_Violet.png';
 
 class Header extends React.Component {
     render() {
@@ -29,7 +31,7 @@ class Image extends React.Component {
     render() {
         return(
             <div className='recipe-image'>
-                <img src={this.props.src} />
+                <img src={this.props.src} alt=""/>
             </div>
         )
     }
@@ -38,6 +40,8 @@ class Heart extends React.Component {
     render() {
         return(
             <div className='heart'>
+                <img src={heart_VW} alt='heart_VW' />
+                <img src={heart_Violet} alt='heart_Violet' />
             </div>
         )
     }
@@ -48,8 +52,10 @@ class Box extends React.Component {
             <div className='recipe-wrapper'>
                 <Image src={this.props.src}/>
                 <Heart />
-                <a href={this.props.href} target='_blank'>{this.props.name}</a>
-                <p>{this.props.recipe}</p>
+                <div className='text-wrapper'>
+                    <a href={this.props.href} target='_blank'>{this.props.name}</a>
+                    <p>{this.props.recipe}</p>
+                </div>
             </div>
         )
     }

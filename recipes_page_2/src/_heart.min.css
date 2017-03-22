@@ -1,0 +1,1 @@
+.heart{position:relative;height:50px;width:50px;top:-190px;left:235px}.heart img{position:absolute;width:55%}.heart img:nth-child(2){display:none}.heart:hover{transform:scale(1.1)}

@@ -45,23 +45,28 @@ p {
         width: 300px;
     }
 }
-a {
-    font-size: 20px;
-    font-family: 'BalooBhaina-Regular';
-    color: $violet;
-    height: 44px;
-    display: block;
-    cursor: pointer;
-    text-decoration: none;
-    text-shadow: 5px 5px 5px $shadow;
-    &:hover {
-        transform: scale(1.1);
-        color: $green;
-    }
-    &:active {
-        color: #9E9E9E;
+.text-wrapper {
+    position: relative;
+    top: -30px;
+    a {
+        font-size: 20px;
+        font-family: 'BalooBhaina-Regular';
+        color: $violet;
+        height: 44px;
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
+        text-shadow: 5px 5px 5px $shadow;
+        &:hover {
+            transform: scale(1.1);
+            color: $green;
+        }
+        &:active {
+            color: #9E9E9E;
+        }
     }
 }
+
 
 @media only screen and (min-width : 420px ) and (max-width : 797px) {
     .page-container {
