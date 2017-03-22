@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { resolve } from 'universal-router';
 import logo from './logo.svg';
 import './styles.min.css';
 import Tiramisu from './img_fonts/Tiramisu.jpg';
@@ -49,7 +51,7 @@ class Page1 extends React.Component {
     render() {
       return (
         <div className='page-container'>
-            <Box src={Tiramisu} name={'Tiramisu'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'https://www.w3schools.com'}/>
+            <Box src={Tiramisu} name={'Tiramisu'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href='/tiramisu' />
             <Box src={Brownie} name={'Brownie'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
             <Box src={chees_cacke} name={'Chees cacke'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
             <Box src={Jogurt_dessert} name={'Jogurt dessert'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
@@ -59,16 +61,32 @@ class Page1 extends React.Component {
   }
 
 class App extends React.Component {
+
   render() {
     return (
       <div>
         <Header />
-        <Page1 />
-        <Recipe recipeImg={Tiramisu} recipeName={'Tiramisu'}/>
+        {this.props.currentComponent}
         <Footer />
       </div>
     )
   }
 }
+
+const routes = [
+    {
+      path: '/',
+      action: () => <Page1 />
+    },
+    {
+      path: '/tiramisu',
+      action: () => <Recipe recipeImg={Tiramisu} recipeName={'Tiramisu'} />
+    }
+];
+
+resolve(routes, { path: window.location.pathname }).then(component => {
+    ReactDOM.render(<App currentComponent={component} />, document.getElementById('root'));
+});
+
 
 export default App;
