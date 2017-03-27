@@ -29,12 +29,11 @@ export class Recipe extends React.Component {
             <div className='recipe-container'>
                 <img src={this.props.recipeImg} alt='recipe-image' />
                 <h1>{this.props.recipeName}</h1>
-                <Step stepNumber={'1'} stepImg={Step1} stepText={'Etdolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata'} />
+                <Step stepNumber={'1'} stepImg={Step1} stepText={'Put the cream, mascarpone, Marsala and sugar in a large bowl. Whisk until all ingredients completely combined and have the consistency of thickly whipped cream.'} />
                 <Step stepNumber={'2'} stepImg={Step2} stepText={'Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore etdolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata'} />
                 <Step stepNumber={'3'} stepImg={Step3} stepText={'Sed diam nonumy eirmod tempor invidunt ut labore etdolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata'} />
                 <Step stepNumber={'4'} stepImg={Step4} stepText={'Ut labore etdolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata'} />
                 <Step stepNumber={'5'} stepImg={Step5} stepText={'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore etdolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata'} />
-
             </div>
         )
     }
