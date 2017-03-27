@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { resolve } from 'universal-router';
-import logo from './logo.svg';
 import './styles.min.css';
 import Tiramisu from './img_fonts/Tiramisu.jpg';
 import Brownie from './img_fonts/Brownie.jpg';
@@ -13,7 +12,7 @@ import {Header, Footer} from './Header_Footer.js';
 import {Recipe} from './Recipe.js';
 
 
-class Image extends React.Component {
+class Imagebox extends React.Component {
     render() {
         return(
             <div className='recipe-image'>
@@ -23,20 +22,35 @@ class Image extends React.Component {
     }
 }
 class Heart extends React.Component {
-    render() {
+    // var HeartChecked = React.createClass({
+    //   getInitialState: function () {
+    //     return {
+    //         complete: (!!this.props.complete) || false
+    //       };
+    //   },
+    handleChange: function() {
+        this.setState({
+            complete: !this.state.complete
+        });
+    }
+    render: function() {
+        var heartChange1={
+          'display': this.state.complete ? 'none' : 'inline-block'
+        };
         return(
             <div className='heart'>
-                <img src={heart_VW} alt='heart_VW' />
-                <img src={heart_Violet} alt='heart_Violet' />
+                <img style={heartChange1} src={heart_VW} alt='heart_VW' onChange={this.handleChange} complete: false/>
+                <img src={heart_Violet} alt='heart_Violet' onChange={this.handleChange}/>
             </div>
         )
     }
 }
+// )}
 class Box extends React.Component {
     render() {
         return(
             <div className='recipe-wrapper'>
-                <Image src={this.props.src}/>
+                <Imagebox src={this.props.src}/>
                 <Heart />
                 <div className='text-wrapper'>
                     <a href={this.props.href} target='_blank'>{this.props.name}</a>
