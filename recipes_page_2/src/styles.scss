@@ -11,6 +11,11 @@
     font-family: OpenSans-Light;
     src: url('img_fonts/OpenSans-Light.ttf');
 }
+body {
+    background-image: url('img_fonts/macaroons_2.1.jpg');
+    background-repeat: no-repeat;
+     background-origin: content-box;
+}
 
 p {
     font-family: 'OpenSans-Light';
@@ -27,6 +32,7 @@ p {
    text-align: center;
 }
 .recipe-wrapper {
+    background-color: white;
     display: inline-block;
     width: 300px;
     height: 320px;
