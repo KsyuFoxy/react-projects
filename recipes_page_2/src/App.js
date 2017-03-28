@@ -11,7 +11,30 @@ import heart_Violet from './img_fonts/heart_Violet.png';
 import {Header, Footer} from './Header_Footer.js';
 import {Recipe} from './Recipe.js';
 
-
+// const element = {
+//     type: 'p',
+//     props: {
+//         className: 'header',
+//         children: 'My text'
+//     }
+// }
+// class Imagebox1 extends React.Component{
+//     render() {
+//         const {children, src} = this.props;
+//         return {
+//             type: 'div',
+//             props: {
+//                 className: 'recipe-image',
+//                 children: {
+//                     type: 'img',
+//                     props: {
+//                         src: src
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 class Imagebox extends React.Component {
     render() {
         return(
@@ -21,31 +44,33 @@ class Imagebox extends React.Component {
         )
     }
 }
+
 class Heart extends React.Component {
-    // var HeartChecked = React.createClass({
-    //   getInitialState: function () {
-    //     return {
-    //         complete: (!!this.props.complete) || false
-    //       };
-    //   },
-    handleChange: function() {
-        this.setState({
-            complete: !this.state.complete
-        });
-    }
-    render: function() {
-        var heartChange1={
-          'display': this.state.complete ? 'none' : 'inline-block'
+  constructor(props) {
+    super(props);
+    this.state = {
+      liked: false
+    };
+  }
+
+  toggleLiked() {
+    this.setState({
+        liked: !this.state.liked
+    });
+  }
+
+  render() {
+        var heartChange = {
+          'opacity': this.state.liked ? 1 : 0
         };
         return(
             <div className='heart'>
-                <img style={heartChange1} src={heart_VW} alt='heart_VW' onChange={this.handleChange} complete: false/>
-                <img src={heart_Violet} alt='heart_Violet' onChange={this.handleChange}/>
+                <img src={heart_VW} alt='heart_VW' />
+                <img onClick={this.toggleLiked.bind(this)} style={heartChange} src={heart_Violet} alt='heart_Violet' />
             </div>
         )
-    }
+  }
 }
-// )}
 class Box extends React.Component {
     render() {
         return(
