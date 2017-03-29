@@ -18,15 +18,14 @@ import FruitDessert_Step3 from './img_fonts/FruitDessert_Step3.jpg';
 import FruitDessert_Step4 from './img_fonts/FruitDessert_Step4.jpg';
 import heart_Violet from './img_fonts/heart_Violet.png';
 import back_arrow from './img_fonts/back_arrow.png';
-// import { browserHistory } from 'react-router'
 
-// var browserHistory = ReactRouter.browserHistory;
-// npm install --save history
-// onClick={BrowserHistory.goBack}
 export class BackButton extends React.Component {
+    goBack() {
+        history.back();
+    }
     render() {
         return(
-            <div className='back-arrow'>
+            <div className='back-arrow' onClick={this.goBack.bind(this)}>
                 <img  src={back_arrow} alt='back_arrow' />
             </div>
         )

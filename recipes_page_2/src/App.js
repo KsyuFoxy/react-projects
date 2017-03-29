@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { resolve } from 'universal-router';
 import './styles.min.css';
@@ -12,30 +12,18 @@ import heart_Violet from './img_fonts/heart_Violet.png';
 import {Header, Footer} from './Header_Footer.js';
 import {RecipeTiramisu, RecipeBrownie, RecipeCheesCacke, RecipeFruitDessert} from './Recipe.js';
 
-// const element = {
-//     type: 'p',
-//     props: {
-//         className: 'header',
-//         children: 'My text'
-//     }
-// }
-// class Imagebox1 extends React.Component{
-//     render() {
-//         const {children, src} = this.props;
-//         return {
-//             type: 'div',
-//             props: {
-//                 className: 'recipe-image',
-//                 children: {
-//                     type: 'img',
-//                     props: {
-//                         src: src
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+var counter = parseInt(window.localStorage.getItem('counter'), 10);
+if (isNaN(counter) ) {
+    counter = 0;
+} else {
+    counter += 1;
+
+}
+
+window.localStorage.setItem('counter', counter);
+console.log('counter: ', counter);
+
+
 class Imagebox extends React.Component {
     render() {
         return(
@@ -79,26 +67,16 @@ class Box extends React.Component {
                 <Imagebox src={this.props.src}/>
                 <Heart />
                 <div className='text-wrapper'>
-                    <a href={this.props.href} target='_blank'>{this.props.name}</a>
+                    <a href={this.props.href}>{this.props.name}</a>
                     <p>{this.props.recipe}</p>
                 </div>
             </div>
         )
     }
 }
-// var self = this;
+
 class Page1 extends React.Component {
-//
-//     getBackgroundStyle() {
-//         this.setState(function(){
-//                     return { backgroundImage : "url('img_fonts/macaroons_1.1.jpg')"
-//         };
-//     });
-// }
-//     self.getBackgroundStyle();
-
     render() {
-
       return (
         <div className='page-container'>
             <Box src={Tiramisu} name={'Tiramisu'} recipe={'Discover this delicious Italian dessert, which is light, tasty and a real masterpiece.'} href='/tiramisu' />
@@ -115,7 +93,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.myClassName}>
         <Header />
         {this.props.currentComponent}
         <Footer />
@@ -127,29 +105,29 @@ class App extends React.Component {
 const routes = [
     {
       path: '/',
-      action: () => <Page1 />
+      action: () => ({component: <Page1 />, myClassName: 'body'})
     },
     {
       path: '/tiramisu',
-      action: () => <RecipeTiramisu recipeImg={Tiramisu_big} recipeName={'Tiramisu'} />
+      action: () => ({component: <RecipeTiramisu recipeImg={Tiramisu_big} recipeName={'Tiramisu'} />, myClassName: ''})
    },
    {
      path: '/brownie',
-     action: () => <RecipeBrownie recipeImg={Brownie} recipeName={'Brownie'} />
+     action: () => ({component: <RecipeBrownie recipeImg={Brownie} recipeName={'Brownie'} />, myClassName: ''})
      },
      {
        path: '/cheescacke',
-       action: () => <RecipeCheesCacke recipeImg={chees_cacke} recipeName={'Chees cacke'} />
+       action: () => ({component: <RecipeCheesCacke recipeImg={chees_cacke} recipeName={'Chees cacke'} />, myClassName: ''})
    },
    {
      path: '/fruitdessert',
-     action: () => <RecipeFruitDessert recipeImg={Fruit_dessert} recipeName={'Fruit dessert'} />
+     action: () => ({component: <RecipeFruitDessert recipeImg={Fruit_dessert} recipeName={'Fruit dessert'} />, myClassName: ''})
    }
 ];
 
 
-resolve(routes, { path: window.location.pathname }).then(component => {
-    ReactDOM.render(<App currentComponent={component} />, document.getElementById('root'));
+resolve(routes, { path: window.location.pathname }).then(route => {
+    ReactDOM.render(<App currentComponent={route.component} myClassName={route.myClassName} />, document.getElementById('root'));
 });
 
 
