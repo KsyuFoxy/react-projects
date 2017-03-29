@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import { resolve } from 'universal-router';
 import './styles.min.css';
 import Tiramisu from './img_fonts/Tiramisu.jpg';
+import Tiramisu_big from './img_fonts/Tiramisu_big.jpg';
 import Brownie from './img_fonts/Brownie.jpg';
 import chees_cacke from './img_fonts/chees_cacke.jpg';
-import Jogurt_dessert from './img_fonts/Jogurt_dessert.jpg';
+import Fruit_dessert from './img_fonts/Fruit_dessert.jpg';
 import heart_VW from './img_fonts/heart_VW.png';
 import heart_Violet from './img_fonts/heart_Violet.png';
 import {Header, Footer} from './Header_Footer.js';
-import {Recipe} from './Recipe.js';
+import {RecipeTiramisu, RecipeBrownie, RecipeCheesCacke, RecipeFruitDessert} from './Recipe.js';
 
 // const element = {
 //     type: 'p',
@@ -100,14 +101,15 @@ class Page1 extends React.Component {
 
       return (
         <div className='page-container'>
-            <Box src={Tiramisu} name={'Tiramisu'} recipe={'Discover this delicious Italian dessert.'} href='/tiramisu' />
-            <Box src={Brownie} name={'Brownie'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
-            <Box src={chees_cacke} name={'Chees cacke'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
-            <Box src={Jogurt_dessert} name={'Jogurt dessert'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
+            <Box src={Tiramisu} name={'Tiramisu'} recipe={'Discover this delicious Italian dessert, which is light, tasty and a real masterpiece.'} href='/tiramisu' />
+            <Box src={Brownie} name={'Brownie'} recipe={'The typical chocolate brownies are also a real treat.'} href={'/brownie'}/>
+            <Box src={chees_cacke} name={'Chees cacke'} recipe={'This cheesecake you will love, it is rich, sweet and so satisfying.'} href={'/cheescacke'}/>
+            <Box src={Fruit_dessert} name={'Fruit dessert'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'/fruitdessert'}/>
         </div>
       )
     }
   }
+
 
 class App extends React.Component {
 
@@ -129,9 +131,22 @@ const routes = [
     },
     {
       path: '/tiramisu',
-      action: () => <Recipe recipeImg={Tiramisu} recipeName={'Tiramisu'} />
-    }
+      action: () => <RecipeTiramisu recipeImg={Tiramisu_big} recipeName={'Tiramisu'} />
+   },
+   {
+     path: '/brownie',
+     action: () => <RecipeBrownie recipeImg={Brownie} recipeName={'Brownie'} />
+     },
+     {
+       path: '/cheescacke',
+       action: () => <RecipeCheesCacke recipeImg={chees_cacke} recipeName={'Chees cacke'} />
+   },
+   {
+     path: '/fruitdessert',
+     action: () => <RecipeFruitDessert recipeImg={Fruit_dessert} recipeName={'Fruit dessert'} />
+   }
 ];
+
 
 resolve(routes, { path: window.location.pathname }).then(component => {
     ReactDOM.render(<App currentComponent={component} />, document.getElementById('root'));
