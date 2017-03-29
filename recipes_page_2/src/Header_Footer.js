@@ -10,20 +10,22 @@ export class Header extends React.Component {
   };
 }
 export class Footer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'marginTop': 132
-        }
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         'marginTop': '132px'
+    //     }
+    // }
     render() {
-        // var screenHeight = window.screen.availHeight;
-        // var marginTop = this.state.style.marginTop;
-        //
-        // console.log(marginTop)
+        var screenHeight = window.innerHeight;
+        var marginTop = {
+            'marginTop': '132px'
+        }
+        console.log('screenHeight:', screenHeight)
+        console.log('marginTop', marginTop)
 
       return (
-        <div className='footer' style={{marginTop: this.state.value + 'px'}}>
+        <div className='footer' style={marginTop}>
               <p>@ Copyright 2017 All rights reserved</p>
         </div>
       )

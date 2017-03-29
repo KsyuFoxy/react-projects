@@ -73,7 +73,28 @@ p {
         }
     }
 }
-
+.likes-quantity{
+    position: absolute;
+    right: 15rem;
+    top: 7rem;
+    font-size: 25px;
+    text-align: left;
+    height: 31px;
+    line-height: 31px;
+    img {
+        width: 25px;
+        display: inline-block;
+        border: none;
+        margin: 0 15px;
+        border-radius: 0;
+        vertical-align: middle;
+    }
+    div {
+        display: inline-block;
+        vertical-align: middle;
+        color: $green;
+    }
+}
 
 @media only screen and (min-width : $mobile-breakpoint ) and (max-width : $middle-breakpoint) {
     .page-container {

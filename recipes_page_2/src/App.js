@@ -49,13 +49,13 @@ class Heart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      liked: false
+      liked: false,
     };
   }
 
   toggleLiked() {
     this.setState({
-        liked: !this.state.liked
+        liked: !this.state.liked,
     });
   }
 
@@ -85,12 +85,22 @@ class Box extends React.Component {
         )
     }
 }
-
+// var self = this;
 class Page1 extends React.Component {
+//
+//     getBackgroundStyle() {
+//         this.setState(function(){
+//                     return { backgroundImage : "url('img_fonts/macaroons_1.1.jpg')"
+//         };
+//     });
+// }
+//     self.getBackgroundStyle();
+
     render() {
+
       return (
         <div className='page-container'>
-            <Box src={Tiramisu} name={'Tiramisu'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href='/tiramisu' />
+            <Box src={Tiramisu} name={'Tiramisu'} recipe={'Discover this delicious Italian dessert.'} href='/tiramisu' />
             <Box src={Brownie} name={'Brownie'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
             <Box src={chees_cacke} name={'Chees cacke'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>
             <Box src={Jogurt_dessert} name={'Jogurt dessert'} recipe={'Lorem ipsun dolor, amen Lorem ipsun dolor, amen Lorem ipsun dolor, amen'} href={'#'}/>

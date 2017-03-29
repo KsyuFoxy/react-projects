@@ -1,8 +1,9 @@
 .step-container {
+    margin-top: 40px;
     p:nth-of-type(1) {
         font-size: 25px;
         font-weight: bold;
-        color: #975992;
+        color: $green;
         width: 100%;
     }
 }
@@ -15,7 +16,7 @@
         overflow: hidden;
         border-top-right-radius: 80px;
         border-bottom-left-radius: 80px;
-        border: 2px solid #975992;
+        border: 2px solid $violet;
     }
     h1 {
         font-family: 'BalooBhaina-Regular';
@@ -49,6 +50,26 @@
             color: black;
             font-size: 14px;
         }
+    }
+    .indredients {
+        font-size: 30px;
+        margin: 25px auto;
+    }
+    ul {
+        width: 300px;
+        margin: 10px auto;
+
+        li {
+            text-align: left;
+            font-size: 22px;
+            color: $violet;
+            padding: 5px;
+        }
+    }
+    .devide-line {
+        width: 30%;
+        border-bottom: 1px solid $violet;
+        margin: auto;
     }
 }
 
