@@ -19,7 +19,6 @@
         }
     }
 
-
     class Header extends React.Component {
         render() {
             return (
@@ -160,22 +159,22 @@
         constructor(props) {
             super(props);
             this.state = {
-                deliveryAmount: [5, 0, 0, 0, 0],
-                    quantity: [15, 16, 17, 18, 19, 20],
-                    deliveryPrice: [15, 13, 18, 15, 17, 18]
+                quantity: [0, 0, 0, 0, 0, 0],
+                deliveryPrice: [150, 130, 180, 150, 170, 180],
+                deliveryAmount: [0, 0, 0, 0, 0, 0]
             };
         }
-        changeValue(event) {
-            var value = event.target.value;
-            this.props.onInputCellChange(value, this.props.index);
-            var quantities = this.state.quantity;
-            quantities[index] = value;
-            var amounts = this.state.deliveryAmount;
-            amounts[index] = value * deliveryPrice[index];
+        changeValue(value, index) {
+            var newQuantity = this.state.quantity;
+            newQuantity[index] = value;
+            var newAmount = this.state.deliveryAmount;
+            newAmount[index] = value * deliveryPrice[index];
+
+            console.log(newAmount[0]);
 
             this.setState ({
-                deliveryAmount: amounts,
-                quantity: quantities
+                quantity: newQuantity,
+                deliveryAmount: newAmount
             })
         }
 
@@ -189,44 +188,44 @@
                              </tr>
                             <tr>
                               <th>Fruits assortiment 1</th>
-                              <th onInputCellChange={this.changeValue.bind(this)}>{this.state.quantity[0]} </th>
+                              <th index={0} onInputChange={this.changeValue.bind(this)} >{this.state.quantity[0]}</th>
                               <th>Pack.</th>
-                              <th>15.00 €</th>
-                              <th>{this.state.deliveryAmount[0]} €</th>
+                              <th index={0} >{this.state.deliveryPrice[0]} €</th>
+                              <th index={0} >{this.state.deliveryAmount[0]} €</th>
                              </tr>
                             <tr>
                               <th>Fruits assortiment 2</th>
                               <th>{this.state.quantity[1]} </th>
                               <th>Pack.</th>
-                              <th>13.00 €</th>
+                              <th>{this.state.deliveryPrice[1]} €</th>
                               <th>{this.state.deliveryAmount[1]} €</th>
                              </tr>
                             <tr>
                               <th>Cakes assortiment 1</th>
                               <th>{this.state.quantity[2]} </th>
                               <th>Pack.</th>
-                              <th>18.00 €</th>
+                              <th>{this.state.deliveryPrice[2]} €</th>
                               <th>{this.state.deliveryAmount[2]} €</th>
                              </tr>
                             <tr>
                               <th>Cakes assortiment 2</th>
                               <th>{this.state.quantity[3]} </th>
                               <th>Pack.</th>
-                              <th>15.00 €</th>
+                              <th>{this.state.deliveryPrice[3]} €</th>
                               <th>{this.state.deliveryAmount[3]} €</th>
                              </tr>
                             <tr>
                               <th>Berries assortiment 1</th>
                               <th>{this.state.quantity[4]} </th>
                               <th>Pack.</th>
-                              <th>17.50 €</th>
+                              <th>{this.state.deliveryPrice[4]} €</th>
                               <th>{this.state.deliveryAmount[4]} €</th>
                              </tr>
                             <tr>
                               <th>Berries assortiment 2</th>
                               <th>{this.state.quantity[5]} </th>
                               <th>Pack.</th>
-                              <th>18.00 €</th>
+                              <th>{this.state.deliveryPrice[5]} €</th>
                               <th>{this.state.deliveryAmount[5]} €</th>
                             </tr>
                             <tr className="last-row">
