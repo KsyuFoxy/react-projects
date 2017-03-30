@@ -19,6 +19,17 @@ import FruitDessert_Step4 from './img_fonts/FruitDessert_Step4.jpg';
 import heart_Violet from './img_fonts/heart_Violet.png';
 import back_arrow from './img_fonts/back_arrow.png';
 
+// var likesCounter = parseInt(window.localStorage.getItem('likesQuantity'), 10);
+// if (isNaN(likesCounter) ) {
+//     likesCounter = 0;
+// } else {
+//     likesCounter += 1;
+// }
+//
+// window.localStorage.setItem('likesQuantity', likesCounter);
+// console.log('likesCounter: ', likesCounter);
+// console.log('this.state.likesQuantity : ', this.state.likesQuantity );
+
 export class BackButton extends React.Component {
     goBack() {
         history.back();
@@ -36,15 +47,25 @@ export class LikesQuantity extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            likesQuantity : 0,
+            likesQuantity : 0
         }
     }
 updateLikes() {
-    var likes = this.state.likesQuantity += 1;
+    var likes = this.state.likesQuantity;
+    var likesCounter = parseInt(window.localStorage.getItem(likes), 10);
+        if (isNaN(likesCounter) ) {
+            likesCounter = 0;
+        } else {
+            likesCounter += 1;
+        }
+    window.localStorage.setItem(likes, likesCounter);
+    console.log('likesCounter: ', likesCounter);
+
     this.setState({
-        likesQuantity: likes
+        likesQuantity: likesCounter
         })
     }
+
     render() {
         return (
             <div className='likes-quantity'>
@@ -125,9 +146,11 @@ export class RecipeBrownie extends React.Component {
         return(
             <div className='recipe-container'>
                 <BackButton />
-                <img src={this.props.recipeImg} alt='recipe-image' />
-                <h1>{this.props.recipeName}</h1>
                 <LikesQuantity />
+                <div className='recipe-image-recipePage'>
+                    <img src={this.props.recipeImg} alt='recipe-image' />
+                </div>
+                <h1>{this.props.recipeName}</h1>
                 <Ingredients numbers={numbers2}/>
                 <Step stepNumber={'1'} stepImg={Brownie_Step1} stepText={'..'} />
                 <Step stepNumber={'2'} stepImg={Brownie_Step2} stepText={'.'} />
@@ -142,9 +165,11 @@ export class RecipeCheesCacke extends React.Component {
         return(
             <div className='recipe-container'>
                 <BackButton />
-                <img src={this.props.recipeImg} alt='recipe-image' />
-                <h1>{this.props.recipeName}</h1>
                 <LikesQuantity />
+                <div className='recipe-image-recipePage'>
+                    <img src={this.props.recipeImg} alt='recipe-image' />
+                </div>
+                <h1>{this.props.recipeName}</h1>
                 <Ingredients numbers={numbers3}/>
                 <Step stepNumber={'1'} stepImg={Chees_cacke_Step1} stepText={'1 and 3/4 cup of crumbs, dump them into a food processor along with the softened butter and 1/3 cup of sugar and blend everything together very well. Distribute the crumbs around the bottom of the pan.'} />
                 <Step stepNumber={'2'} stepImg={Chees_cacke_Step2} stepText={'beat the cream cheese until it becomes fluffy with mixer. Beat in 1 cup of sugar, eggs and sour cream'} />
@@ -159,9 +184,11 @@ export class RecipeFruitDessert extends React.Component {
         return(
             <div className='recipe-container'>
                 <BackButton />
-                <img src={this.props.recipeImg} alt='recipe-image' />
-                <h1>{this.props.recipeName}</h1>
                 <LikesQuantity />
+                <div className='recipe-image-recipePage'>
+                    <img src={this.props.recipeImg} alt='recipe-image' />
+                </div>
+                <h1>{this.props.recipeName}</h1>
                 <Ingredients numbers={numbers4}/>
                 <Step stepNumber={'1'} stepImg={FruitDessert_Step1} stepText={'Slice fruit and put yogurt into a bowl.'} />
                 <Step stepNumber={'2'} stepImg={FruitDessert_Step2} stepText={'Whisk the yogurt until it is thoroughly smooth and without any lumps.'} />

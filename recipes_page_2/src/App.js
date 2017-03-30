@@ -12,18 +12,6 @@ import heart_Violet from './img_fonts/heart_Violet.png';
 import {Header, Footer} from './Header_Footer.js';
 import {RecipeTiramisu, RecipeBrownie, RecipeCheesCacke, RecipeFruitDessert} from './Recipe.js';
 
-var counter = parseInt(window.localStorage.getItem('counter'), 10);
-if (isNaN(counter) ) {
-    counter = 0;
-} else {
-    counter += 1;
-
-}
-
-window.localStorage.setItem('counter', counter);
-console.log('counter: ', counter);
-
-
 class Imagebox extends React.Component {
     render() {
         return(
