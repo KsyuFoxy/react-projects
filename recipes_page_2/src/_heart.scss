@@ -1,16 +1,29 @@
 .heart {
     position: relative;
-    height: 50px;
-    width: 50px;
-    top: -190px;
-    left: 235px;
+    float: right;
+    right: 1em;
+    top: 0.4em;
+    height: 20px;
+    width: 20px;
     cursor: pointer;
+    z-index: 1;
     img {
         position: absolute;
-        width: 55%;
+        width: 100%;
     }
     &:hover {
         transform: scale(1.1);
     }
-
+}
+@media only screen and (min-width : $mobile-breakpoint ) and (max-width : $desktop-breakpoint) {
+    .heart {
+        height: 25px;
+        width: 25px;
+    }
+}
+@media only screen and (min-width : $desktop-breakpoint) {
+    .heart {
+        height: 30px;
+        width: 30px;
+    }
 }

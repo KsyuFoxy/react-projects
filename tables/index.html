@@ -162,10 +162,23 @@
             this.state = {
                 deliveryAmount: [5, 0, 0, 0, 0],
                     quantity: [15, 16, 17, 18, 19, 20],
-                    deliveryPrice: [15.00, 13.00, 18.00, 15.00, 17.50, 18.00]
+                    deliveryPrice: [15, 13, 18, 15, 17, 18]
             };
-
         }
+        changeValue(event) {
+            var value = event.target.value;
+            this.props.onInputCellChange(value, this.props.index);
+            var quantities = this.state.quantity;
+            quantities[index] = value;
+            var amounts = this.state.deliveryAmount;
+            amounts[index] = value * deliveryPrice[index];
+
+            this.setState ({
+                deliveryAmount: amounts,
+                quantity: quantities
+            })
+        }
+
         render() {
             return(
                 <div>
@@ -176,7 +189,7 @@
                              </tr>
                             <tr>
                               <th>Fruits assortiment 1</th>
-                              <th>{this.state.quantity[0]} </th>
+                              <th onInputCellChange={this.changeValue.bind(this)}>{this.state.quantity[0]} </th>
                               <th>Pack.</th>
                               <th>15.00 €</th>
                               <th>{this.state.deliveryAmount[0]} €</th>
@@ -321,10 +334,6 @@
             newInputValues[index] = value;
             newResults[index] = value * configuration.pages.assortValues[index];
 
-            // var quantity = this.state.quantity;
-            // quantity[index] = newResults[index];
-            //
-            // console.log(quantity[5])
             this.setState({
                 inputValues: newInputValues,
                 results: newResults

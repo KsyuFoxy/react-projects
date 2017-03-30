@@ -64,8 +64,8 @@ class Box extends React.Component {
     render() {
         return(
             <div className='recipe-wrapper'>
-                <Imagebox src={this.props.src}/>
                 <Heart />
+                <Imagebox src={this.props.src}/>
                 <div className='text-wrapper'>
                     <a href={this.props.href}>{this.props.name}</a>
                     <p>{this.props.recipe}</p>

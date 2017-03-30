@@ -1,6 +1,5 @@
 .footer {
     position: absolute;
-    // margin-top: 20px;
     width: 100%;
     background-color: $green;
     text-align: center;
@@ -13,14 +12,4 @@
           margin: 10px;
           text-align: center;
      }
-}
-@media only screen and (min-width : 798px ) and (max-width : 1119px) {
-    .footer  {
-    //    margin-top: 41px;
-    }
-}
-@media only screen and (min-width : 1120px) {
-    .footer  {
-    //    margin-top: 65px;
-    }
 }
