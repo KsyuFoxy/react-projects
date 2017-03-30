@@ -1,37 +1,51 @@
+.secondPage-body {
+    width: 100%;
+}
 .step-container {
-    margin-top: 40px;
-    p:nth-of-type(1) {
-        font-size: 25px;
-        font-weight: bold;
-        color: $green;
-        width: 100%;
+    margin-top: 20px;
+    p {
+        margin: 0;
+        &:nth-of-type(1) {
+            font-size: 16px;
+            font-weight: bold;
+            color: $green;
+            width: 100%;
+        }
     }
 }
 .recipe-container {
     width: 80%;
     margin: 20px auto;
     text-align: center;
-    img {
-        width: 80%;
-        overflow: hidden;
-        border-top-right-radius: 80px;
-        border-bottom-left-radius: 80px;
-        border: 2px solid $violet;
+    .recipe-image-recipePage {
+        clear: both;
+        img {
+            width: 80%;
+            overflow: hidden;
+            border-top-right-radius: 80px;
+            border-bottom-left-radius: 80px;
+            border: 2px solid $violet;
+        }
     }
     h1 {
         font-family: 'BalooBhaina-Regular';
         font-size: 25px;
         color: $green;
+        margin: 0;
         margin-top: 20px;
+    }
+    .indredients-container {
+        width: 85%;
+        margin: auto;
     }
     .step-wrapper {
         display: block;
         width: 90%;
-        margin: 20px auto;
+        margin: 0 auto;
         div {
             display: inline-block;
             width: 100%;
-            padding: 10px;
+            padding: 5px;
             &:nth-child(2) {
                 height: auto;
                 line-height: normal;
@@ -52,16 +66,15 @@
         }
     }
     .indredients {
-        font-size: 30px;
-        margin: 25px auto;
+        font-size: 22px;
+        margin: 10px auto;
     }
     ul {
         width: 300px;
         margin: 10px auto;
-
         li {
             text-align: left;
-            font-size: 22px;
+            font-size: 16px;
             color: $violet;
             padding: 5px;
         }
@@ -78,22 +91,30 @@
        h1 {
            font-size: 35px;
        }
-       .step-wrapper {
-           display: block;
-           div {
-               width: 90%;
-               img {
-                   width: 70%;
+       .recipe-image-recipePage img {
+           border-top-right-radius: 115px;
+           border-bottom-left-radius: 115px;
+       }
+       .step-container {
+           margin-top: 20px;
+           p {
+               margin: 10px auto;
+           }
+           .step-wrapper {
+               display: block;
+               div {
+                   width: 90%;
+                   img {
+                       width: 70%;
+                   }
                }
            }
        }
+       .indredients {
+           font-size: 22px;
+           margin: 15px auto;
+       }
     }
-    .recipe-container img {
-                width: 75%;
-               margin-top: 20px;
-               border-top-right-radius: 135px;
-               border-bottom-left-radius: 135px;
-           }
 }
 
 @media only screen and (min-width : $middle-breakpoint) and (max-width : $desktop-breakpoint) {
@@ -101,61 +122,102 @@
         h1  {
             font-size: 35px;
         }
-        .step-wrapper {
-            display: flex;
-            width: 700px;
-            div {
-                width: 45%;
-                &:nth-child(2) {
-                    height: auto;
-                    line-height: normal;
-                    line-height: 224px;
-                    height: 224px;
-                    vertical-align: middle;
+        .recipe-image-recipePage img {
+            margin-top: 35px;
+            margin-bottom: 20px;
+           width: 500px;
+           border-top-right-radius: 125px;
+           border-bottom-left-radius: 125px;
+        }
+        .step-container {
+            margin-top: 40px;
+            p {
+                margin: 5px auto;
+                &:nth-of-type(1) {
+                    font-size: 17px;
                 }
             }
-            img {
-                width: 100%;
+            .step-wrapper {
+                display: flex;
+                width: 80%;
+                margin: 20px auto;
+                div {
+                    width: 45%;
+                    padding: 10px;
+                    &:nth-child(2) {
+                        height: auto;
+                        line-height: normal;
+                        line-height: 151px;
+                        height: 151px;
+                        vertical-align: middle;
+                    }
+                }
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .indredients-container {
+            .indredients {
+                font-size: 30px;
+                margin: 25px auto;
+            }
+            ul {
+                li {
+                    font-size: 20px;
+                }
             }
         }
     }
-    .recipe-container img {
-                margin-top: 35px;
-                margin-bottom: 20px;
-               width: 500px;
-               border-top-right-radius: 150px;
-               border-bottom-left-radius: 150px;
-           }
 }
 @media only screen and (min-width : $desktop-breakpoint) {
     .recipe-container {
         h1 {
             font-size: 45px;
         }
-        .step-wrapper {
-            display: flex;
-            width: 800px;
-            div {
-                width: 45%;
-                padding: 20px;
-                &:nth-child(2) {
-                    height: auto;
-                    line-height: normal;
-                    line-height: 224px;
-                    height: 224px;
-                    vertical-align: middle;
-                }
+        .recipe-image-recipePage img {
+            margin-top: 76px;
+            margin-bottom: 20px;
+            width: 600px;
+            border-top-right-radius: 225px;
+            border-bottom-left-radius: 225px;
+        }
+        .indredients-container {
+            .indredients {
+                font-size: 35px;
+                margin: 32px auto;
             }
-            img {
-                width: 100%;
+            li {
+                font-size: 22px;
             }
         }
-    }
-    .recipe-container img {
-        margin-top: 76px;
-        margin-bottom: 20px;
-        width: 600px;
-        border-top-right-radius: 225px;
-        border-bottom-left-radius: 225px;
+        .step-container {
+            margin-top: 40px;
+            p {
+                margin: 5px auto;
+                &:nth-of-type(1) {
+                    font-size: 20px;
+                }
+            }
+            .step-wrapper {
+                display: flex;
+                width: 800px;
+                margin: 20px auto;
+                div {
+                    width: 45%;
+                    padding: 20px;
+                    &:nth-child(2) {
+                        height: auto;
+                        line-height: normal;
+                        line-height: 224px;
+                        height: 224px;
+                        vertical-align: middle;
+                    }
+                }
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
 }

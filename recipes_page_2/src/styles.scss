@@ -72,13 +72,9 @@ p {
     }
 }
 .likes-quantity{
-    position: absolute;
-    right: 15rem;
-    top: 7rem;
     font-size: 25px;
-    text-align: left;
-    height: 31px;
-    line-height: 31px;
+    float: right;
+    padding: 0 5px;
     img {
         width: 25px;
         display: inline-block;
@@ -96,13 +92,14 @@ p {
 .back-arrow {
     width: 70px;
     position: absolute;
-    top: -3.5rem;
-    left: 5rem;
+    top: 0.5rem;
+    left: 1rem;
     cursor: pointer;
     img {
-        width: 100%;
+        width: 55%;
         border-radius: 0;
         border: none;
+        margin: 0;
     }
     &:hover {
         transform: scale(1.1);
@@ -113,6 +110,7 @@ p {
 @media only screen and (min-width : $mobile-breakpoint ) and (max-width : $middle-breakpoint) {
     .page-container {
        width: 400px;
+       }
        .recipe-wrapper {
            width: 300px;
            height: 320px;
@@ -123,8 +121,14 @@ p {
                border-bottom-left-radius: 108px;
            }
        }
+       .back-arrow {
+           top: 1.5rem;
+           left: 2rem;
+           img {
+               width: 85%;
+           }
+       }
     }
-}
 @media only screen and (min-width : $middle-breakpoint) and (max-width : $desktop-breakpoint) {
     .page-container {
        width: 800px;
@@ -144,6 +148,13 @@ p {
     .text-wrapper {
         margin-bottom: 140px;
     }
+    .back-arrow {
+        top: 1rem;
+        left: 5rem;
+        img {
+            width: 100%;
+        }
+    }
 }
 @media only screen and (min-width : $desktop-breakpoint) {
     .page-container {
@@ -161,5 +172,12 @@ p {
                border-bottom-left-radius: 125px;
            }
        }
+    }
+    .back-arrow {
+        top: 1rem;
+        left: 5rem;
+        img {
+            width: 100%;
+        }
     }
 }

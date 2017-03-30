@@ -109,19 +109,19 @@ const routes = [
     },
     {
       path: '/tiramisu',
-      action: () => ({component: <RecipeTiramisu recipeImg={Tiramisu_big} recipeName={'Tiramisu'} />, myClassName: ''})
+      action: () => ({component: <RecipeTiramisu recipeImg={Tiramisu_big} recipeName={'Tiramisu'} />, myClassName: 'secondPage-body'})
    },
    {
      path: '/brownie',
-     action: () => ({component: <RecipeBrownie recipeImg={Brownie} recipeName={'Brownie'} />, myClassName: ''})
+     action: () => ({component: <RecipeBrownie recipeImg={Brownie} recipeName={'Brownie'} />, myClassName: 'secondPage-body'})
      },
      {
        path: '/cheescacke',
-       action: () => ({component: <RecipeCheesCacke recipeImg={chees_cacke} recipeName={'Chees cacke'} />, myClassName: ''})
+       action: () => ({component: <RecipeCheesCacke recipeImg={chees_cacke} recipeName={'Chees cacke'} />, myClassName: 'secondPage-body'})
    },
    {
      path: '/fruitdessert',
-     action: () => ({component: <RecipeFruitDessert recipeImg={Fruit_dessert} recipeName={'Fruit dessert'} />, myClassName: ''})
+     action: () => ({component: <RecipeFruitDessert recipeImg={Fruit_dessert} recipeName={'Fruit dessert'} />, myClassName: 'secondPage-body'})
    }
 ];
 

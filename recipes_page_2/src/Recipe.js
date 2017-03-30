@@ -91,7 +91,7 @@ const numbers4 = ['1 tbsp vanilla sugar', '3 fl oz honey', '3 Tbsp salted nuts']
 export class Ingredients extends React.Component {
     render() {
         return(
-            <div>
+            <div className='indredients-container'>
                 <p className='indredients'>Ingredients</p>
                 <IngredientsList numbers={this.props.numbers} />
                 <div className='devide-line'></div>
@@ -105,9 +105,11 @@ export class RecipeTiramisu extends React.Component {
         return(
             <div className='recipe-container'>
                 <BackButton />
-                <img src={this.props.recipeImg} alt='recipe-image' />
-                <h1>{this.props.recipeName}</h1>
                 <LikesQuantity />
+                <div className='recipe-image-recipePage'>
+                    <img src={this.props.recipeImg} alt='recipe-image' />
+                </div>
+                <h1>{this.props.recipeName}</h1>
                 <Ingredients numbers={numbers1}/>
                 <Step stepNumber={'1'} stepImg={Tiramisu_Step1} stepText={'Beat egg yolks and sugar together until pale and creamy. Gently fold in mascarpone and liqueur. Whip cream to firm peaks.'} />
                 <Step stepNumber={'2'} stepImg={Tiramisu_Step2} stepText={'Beat eggwhites until stiff peaks form. Fold into mascarpone mixture. Cover with plastic wrap.'} />
