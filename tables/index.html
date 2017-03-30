@@ -97,6 +97,7 @@
     class LastRow extends React.Component {
       getAmount(event) {
           var value = event.target.value;
+          this.context.updateQuantity(value, this.props.index);
           this.props.onInputChange(value, this.props.index);
       }
 
@@ -112,6 +113,9 @@
           </tr>
         )
       }
+    }
+    LastRow.contextTypes = {
+        updateQuantity: React.PropTypes.func
     }
     class BlueRow extends React.Component {
         render() {
@@ -146,38 +150,16 @@
             )
         }
     }
-    function arraySum(arr) {
-        var sum = 0;
-        var i;
-        for (i=0; i<arr.length; i++) {
-            sum += arr[i];
-        }
-        return sum;
-    }
 
     class ConditionTable extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
-                quantity: [0, 0, 0, 0, 0, 0],
+                quantity: [1, 0, 0, 0, 0, 0],
                 deliveryPrice: [150, 130, 180, 150, 170, 180],
                 deliveryAmount: [0, 0, 0, 0, 0, 0]
             };
         }
-        changeValue(value, index) {
-            var newQuantity = this.state.quantity;
-            newQuantity[index] = value;
-            var newAmount = this.state.deliveryAmount;
-            newAmount[index] = value * deliveryPrice[index];
-
-            console.log(newAmount[0]);
-
-            this.setState ({
-                quantity: newQuantity,
-                deliveryAmount: newAmount
-            })
-        }
-
         render() {
             return(
                 <div>
@@ -188,45 +170,45 @@
                              </tr>
                             <tr>
                               <th>Fruits assortiment 1</th>
-                              <th index={0} onInputChange={this.changeValue.bind(this)} >{this.state.quantity[0]}</th>
+                              <th>{this.context.quantity[0]}</th>
                               <th>Pack.</th>
-                              <th index={0} >{this.state.deliveryPrice[0]} €</th>
-                              <th index={0} >{this.state.deliveryAmount[0]} €</th>
+                              <th>{this.state.deliveryPrice[0]} €</th>
+                              <th>{this.state.deliveryPrice[0] * this.context.quantity[0]} €</th>
                              </tr>
                             <tr>
                               <th>Fruits assortiment 2</th>
-                              <th>{this.state.quantity[1]} </th>
+                              <th>{this.context.quantity[1]} </th>
                               <th>Pack.</th>
                               <th>{this.state.deliveryPrice[1]} €</th>
-                              <th>{this.state.deliveryAmount[1]} €</th>
+                              <th>{this.state.deliveryPrice[1] * this.context.quantity[1]} €</th>
                              </tr>
                             <tr>
                               <th>Cakes assortiment 1</th>
-                              <th>{this.state.quantity[2]} </th>
+                              <th>{this.context.quantity[2]} </th>
                               <th>Pack.</th>
                               <th>{this.state.deliveryPrice[2]} €</th>
-                              <th>{this.state.deliveryAmount[2]} €</th>
+                              <th>{this.state.deliveryPrice[2] * this.context.quantity[2]} €</th>
                              </tr>
                             <tr>
                               <th>Cakes assortiment 2</th>
-                              <th>{this.state.quantity[3]} </th>
+                              <th>{this.context.quantity[3]} </th>
                               <th>Pack.</th>
                               <th>{this.state.deliveryPrice[3]} €</th>
-                              <th>{this.state.deliveryAmount[3]} €</th>
+                              <th>{this.state.deliveryPrice[3] * this.context.quantity[3]} €</th>
                              </tr>
                             <tr>
                               <th>Berries assortiment 1</th>
-                              <th>{this.state.quantity[4]} </th>
+                              <th>{this.context.quantity[4]} </th>
                               <th>Pack.</th>
                               <th>{this.state.deliveryPrice[4]} €</th>
-                              <th>{this.state.deliveryAmount[4]} €</th>
+                              <th>{this.state.deliveryPrice[4] * this.context.quantity[4]} €</th>
                              </tr>
                             <tr>
                               <th>Berries assortiment 2</th>
-                              <th>{this.state.quantity[5]} </th>
+                              <th>{this.context.quantity[5]} </th>
                               <th>Pack.</th>
                               <th>{this.state.deliveryPrice[5]} €</th>
-                              <th>{this.state.deliveryAmount[5]} €</th>
+                              <th>{this.state.deliveryPrice[5] * this.context.quantity[5]} €</th>
                             </tr>
                             <tr className="last-row">
                               <th colSpan="4">Table amount</th>
@@ -238,6 +220,11 @@
             )
         }
     }
+
+    ConditionTable.contextTypes = {
+        quantity: React.PropTypes.any
+    }
+
     class DescribeTables extends React.Component {
         render() {
             return(
@@ -542,17 +529,44 @@
     }
 
     class App extends React.Component {
+
+         constructor(props) {
+             super(props);
+             this.state = {
+                 quantity: [0, 0, 0, 0, 0, 0]
+             }
+         }
+
+         getChildContext () {
+             return {
+                 quantity: this.state.quantity,
+                 updateQuantity: this.updateQuantity.bind(this)
+             }
+         }
+
+         updateQuantity(quantityValue, index) {
+             var newQuantity = this.state.quantity;
+             newQuantity[index] = quantityValue;
+             this.setState({quantity: newQuantity})
+         }
+
       render() {
         return (
           <div>
-          <Page1 />
-          <Page2 />
-          <Page3 />
-          <Page4 />
+              <Page1 />
+              <Page2 />
+              <Page3 />
+              <Page4 />
           </div>
         )
       }
     }
+
+    App.childContextTypes = {
+        quantity: React.PropTypes.any,
+        updateQuantity: React.PropTypes.any
+    };
+
 
         ReactDOM.render(React.createElement(App), document.getElementById('react-with-scss'));
     </script>
